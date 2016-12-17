@@ -31,6 +31,14 @@ public enum ConfettiType {
             return customImage
         }
         
-        return UIImage(named: imageName)
+        let path = NSBundle(forClass: ConfettiView.self).pathForResource("SAConfettiView", ofType: "bundle")
+        let bundle = NSBundle(path: path!)
+        let imagePath = bundle?.pathForResource(imageName, ofType: "png")
+        let url = NSURL(fileURLWithPath: imagePath!)
+        let data = NSData(contentsOfURL: url)
+        if let data = data {
+            return UIImage(data: data)!
+        }
+        return nil
     }
 }
