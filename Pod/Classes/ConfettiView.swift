@@ -17,7 +17,7 @@ public class ConfettiView: UIView {
                          UIColor(red:0.30, green:0.76, blue:0.85, alpha:1.0),
                          UIColor(red:0.58, green:0.39, blue:0.55, alpha:1.0)]
     public var intensity: Float =  0.5
-    public var type: ConfettiType!
+    public var type: ConfettiType! = .Confetti
     private(set) var active = false
     
     public override func layoutSubviews() {
