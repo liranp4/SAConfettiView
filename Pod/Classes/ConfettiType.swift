@@ -9,33 +9,33 @@
 import UIKit
 
 public enum ConfettiType {
-    case Confetti
-    case Triangle
-    case Star
-    case Diamond
+    case confetti
+    case triangle
+    case star
+    case diamond
     case Image(UIImage)
     
     var image: UIImage? {
         var imageName: String!
         
         switch self {
-        case .Confetti:
+        case .confetti:
             imageName = "confetti"
-        case .Triangle:
+        case .triangle:
             imageName = "triangle"
-        case .Star:
+        case .star:
             imageName = "star"
-        case .Diamond:
+        case .diamond:
             imageName = "diamond"
         case let .Image(customImage):
             return customImage
         }
         
-        let path = NSBundle(forClass: ConfettiView.self).pathForResource("SAConfettiView", ofType: "bundle")
-        let bundle = NSBundle(path: path!)
-        let imagePath = bundle?.pathForResource(imageName, ofType: "png")
-        let url = NSURL(fileURLWithPath: imagePath!)
-        let data = NSData(contentsOfURL: url)
+        let path = Bundle(for: ConfettiView.self).path(forResource: "SAConfettiView", ofType: "bundle")
+        let bundle = Bundle(path: path!)
+        let imagePath = bundle?.path(forResource: imageName, ofType: "png")
+        let url = URL(fileURLWithPath: imagePath!)
+        let data = try? Data(contentsOf: url)
         if let data = data {
             return UIImage(data: data)!
         }
